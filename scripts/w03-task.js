@@ -2,7 +2,7 @@
 
 /* FUNCTIONS */
 /* Function Definition - Add Numbers */
-function add (number1, number2) {
+function add(number1, number2){
     return number1 + number2;
 }
 function addNumbers(){
@@ -12,8 +12,9 @@ function addNumbers(){
 }
 document.querySelector("#addNumbers").addEventListener("click", addNumbers);
 
+
 /* Function Expression - Subtract Numbers */
-function subtract(number1, number2){
+let subtract = function (number1, number2){
     return number1 - number2;
 }
 function subtractNumbers(){
@@ -23,8 +24,9 @@ function subtractNumbers(){
 }
 document.querySelector("#subtractNumbers").addEventListener("click", subtractNumbers);
 
+
 /* Arrow Function - Multiply Numbers */
-function multiply (number1, number2) {
+function multiply(number1, number2) {
     return number1 * number2;
 }
 
@@ -36,10 +38,9 @@ function multiplyNumbers(){
 
 document.querySelector("#multiplyNumbers").addEventListener("click", multiplyNumbers);
 
+
 /* Open Function Use - Divide Numbers */
-function divide(number1, number2){
-    return number1 / number2;
-}
+let divide = (number1, number2) => number1 / number2;
 
 function divideNumbers(){
     let divideNumber1 = Number(document.querySelector("#dividend").value);
@@ -48,25 +49,29 @@ function divideNumbers(){
 }
 document.querySelector("#divideNumbers").addEventListener("click", divideNumbers);
 
+
 /* Decision Structure */
+let currentDate = new Date();
+let currentYear = currentDate.getFullYear();
+document.querySelector("#year").innerHTML = currentYear;
+
 
 /* ARRAY METHODS - Functional Programming */
 /* Output Source Array */
 let numbersArray = [1,2,3,4,5,6,7,8,9,10,11,12,13];
-document.querySelector("#array").innerHTML = numbersArray;
+document.querySelector("#array").innerHTML = sourceArray;
 
 /* Output Odds Only Array */
-document.querySelector("#odds").innerHTML = numbersArray.filter(number => number % 2 != 0);
+document.querySelector("#odds").innerHTML = sourceArray.filter(number => number % 2 != 0);
 
 /* Output Evens Only Array */
-document.querySelector("#evens").innerHTML = numbersArray.filter(number => number % 2 === 0);
+document.querySelector("#evens").innerHTML = sourceArray.filter(number => number % 2 === 0);
 
 /* Output Sum of Org. Array */
-document.querySelector("#sumOfArray").innerHTML = numbersArray.reduce((sum, number) => sum + number );
+document.querySelector("#sumOfArray").innerHTML = sourceArray.reduce((accumulator, currentValue) => accumulator + currentValue);
 
 /* Output Multiplied by 2 Array */
-document.querySelector("#multiplied").innerHTML = numbersArray.map(number => number * 2);
+document.querySelector("#multiplied").innerHTML = sourceArray.map(number => number * 2);
 
 /* Output Sum of Multiplied by 2 Array */
-document.querySelector("#sumOfMultiplied").innerHTML = numbersArray.map(number => number * 2).reduce((sum, number) => sum + number);
-
+document.querySelector("#sumOfMultiplied").innerHTML = sourceArray.map(number => number * 2).reduce((accumulator, currentValue) => accumulator + currentValue);
