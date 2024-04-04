@@ -279,6 +279,65 @@ footer {
     margin: .5rem;
 }
 
+#movies {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    row-gap: 10rem;
+    column-gap: 6rem;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+#movies div {
+    width: 400px;
+    height: 300px;
+    margin: .5rem;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 0;
+    background-color: #06434E;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10%;
+    border-width: 2px;
+    border-color: rgb(255 255 255);
+}
+
+#left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#movies h4 {
+    color: white;
+    font-size: smaller;
+    margin-left: 1rem;
+}
+
+
+
+#movies h5 {
+    color: white;
+    font-size: larger;
+    margin-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+#movies img {
+    height: 290px;
+    border-radius: 0% 12% 12% 0%;
+    box-shadow: 0 0 30px #777;
+    background-size: contain;
+}
+
+#project-main {
+    background-color: #111;
+}
+
 /* Media Queries */
 @media only screen and (min-width: 32.5em) {
     nav ul {
