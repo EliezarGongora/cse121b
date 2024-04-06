@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSE 121b | Project</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+
+<body id="project-main">
+  <nav>
+    <ul id="menu">
+      <li><a id="toggleMenu">&equiv;</a></li>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../w01-task.html">W1 Task</a></li>
+      <li><a href="../w03-task.html">W3 Task</a></li>
+      <li><a href="../w04-task.html">W4 Task</a></li>
+      <li><a href="../w05-task.html">W5 Task</a></li>
+      <li><a href="../project.html" class="active">Project</a></li>
+    </ul>
+  </nav>
+  <main id="gridly">
+    <h1 style="color: white;">Movies by Eli</h1>
+    <h2 style="color: white;">Top-10 movies and tv shows</h2>
+
+    <select style="margin-left: 1.5rem; margin-bottom: 1rem;" id="sorted" title="Choose sorting.">
+      <option value="" disabled selected>Sort Movies</option>
+      <option value="release">Release Date</option>
+      <option value="rating">Rating</option>
+      <option value="alphabetical">Alphabetical</option>
+      <option value="all">No Sorting</option>
+    </select>
+
+    <div id="movies">
+    </div>
+  </main>
+
+
+  <footer>
+    &copy;<span id="year"></span> | Final Project - Fetching Movie Data | CSE 121b
+  </footer>
+  <script src="scripts/main.js"></script>
+  <script>
+    document.getElementById("year").innerHTML = new Date().getFullYear();
+  </script>
+  <script src="main.js"></script>
+</body>
+
+</html>

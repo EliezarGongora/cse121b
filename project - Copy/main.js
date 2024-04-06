@@ -36,19 +36,11 @@ const displayMovies = (movieElement)=>{
 
 /* async getMovies Function using fetch()*/
 const getMovies= async () => {
-  const url = 'https://imdb188.p.rapidapi.com/api/v1/getWeekTop10';
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ade2e40a01msha511179100b6d86p1011efjsn4a13c36581c1',
-		'X-RapidAPI-Host': 'imdb188.p.rapidapi.com'
-	}
-};
-  const response = await fetch(url, options);
+  const response = await fetch("https://github.com/EliezarGongora/cse121b/blob/main/project/Film.JSON", options);
   movieList = await response.json();
-  console.log(movieList);
-  displayMovies(movieList.data);
   
+  displayMovies(movieList);
+  console.log(movieList);
 };
 
 
