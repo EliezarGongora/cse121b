@@ -14,17 +14,20 @@ const displayMovies = (moviesElement)=>{
       movieName.textContent = movie.Title;
       let moviePlot = document.createElement("h4");
       moviePlot.textContent = movie.Plot;
-      // TODO add year and rating
-      //let rating = document.createElement("h5");
-      //rating.textContent = movie.ratingSummary.aggregateRating.plainText;
+      
+      let rating = document.createElement("h5");
+      rating.textContent = movie.imdbRating;
+
+      let releasedate = document.createElement("h5");
+      releasedate.textContent = movie.Released;
   
       let img = document.createElement("img");
-      img.setAttribute("src", movie.Poster);
+      img.setAttribute("src", movie.Images);
       img.setAttribute("alt", movie.Title);
 
       cardLeftSide.appendChild(movieName);
-     // cardLeftSide.appendChild(rating);
-      // TODO append to cardLeftSide the date and the rating
+      cardLeftSide.appendChild(rating);
+      cardLeftSide.appendChild(releasedate);
       cardLeftSide.appendChild(moviePlot);
       
       article.appendChild(cardLeftSide);
@@ -57,15 +60,15 @@ function sortMovies(movies) {
   let sortedMovies;
   switch (sort) {
     case "release":
-      sortedMovies = movies.sort((a, b) => new Date(a.Released.year, a.Released.month, a.Released.day) - new Date(b.Released.year, b.Released.month, b.Released.day));
+      sortedMovies = movies.sort((a,b ) => new Date(b.Released.month, b.Released.day, b.Released.year) - new Date(a.Released.month, a.Released.day, a.Released.year))
     break;
     case "rating":
-      sortedMovies = movies.sort((a, b) => a.imdbRating.aggregateRating - b.imdbRating.aggregateRating);
+      sortedMovies = movies.sort((a, b) => a.imdbRating - b.imdbRating);
     break;
     case "alphabetical":
       sortedMovies = movies.sort((a, b) => {
-        const nameA = a.Title.text.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.Title.text.toUpperCase(); // ignore upper and lowercase
+        const nameA = a.Title.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.Title.toUpperCase(); // ignore upper and lowercase
         if (nameA < nameB) {
           return -1;
         }
@@ -75,11 +78,16 @@ function sortMovies(movies) {
       
         // names must be equal
         return 0;
-      });
-    break;
-    default:"all"
+
+   
+    
+  });
+  break;
+  default:"all"
     sortedMovies = movies;
+    
   }
+  console.log("sorted:", sortedMovies);
   displayMovies(sortedMovies);
 };
 

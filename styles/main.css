@@ -290,7 +290,7 @@ footer {
 }
 
 #movies div {
-    width: 400px;
+    width: 500px;
     height: 300px;
     margin: .5rem;
     border: 1px solid rgba(0, 0, 0, .1);
@@ -328,7 +328,7 @@ footer {
 
 
 #movies img {
-    height: 290px;
+    height: 290px; width: 70%;
     border-radius: 0% 12% 12% 0%;
     box-shadow: 0 0 30px #777;
     background-size: contain;
