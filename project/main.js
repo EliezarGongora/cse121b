@@ -1,10 +1,8 @@
-/* W05: Programming Tasks */
-
 /* Declare and initialize global variables */
 const moviesElement = document.querySelector("div#movies");
 let movieList = [];
 
-/* async displayTemples Function */
+/* display Function */
 const displayMovies = (movieElement)=>{
   movieElement.forEach((movie) => {
 
@@ -13,17 +11,19 @@ const displayMovies = (movieElement)=>{
       cardLeftSide.setAttribute("id", "left-side");
   
       let movieName = document.createElement("h5");
-      movieName.textContent = movie.titleText.text;
+      movieName.textContent = movie.title.text;
       let moviePlot = document.createElement("h4");
       moviePlot.textContent = movie.plot.plotText.plainText;
       // TODO add year and rating
-  
+      //let rating = document.createElement("h5");
+      //rating.textContent = movie.ratingSummary.aggregateRating.plainText;
   
       let img = document.createElement("img");
       img.setAttribute("src", movie.primaryImage.imageUrl);
       img.setAttribute("alt", movie.titleText.text);
 
       cardLeftSide.appendChild(movieName);
+     // cardLeftSide.appendChild(rating);
       // TODO append to cardLeftSide the date and the rating
       cardLeftSide.appendChild(moviePlot);
       
@@ -34,23 +34,12 @@ const displayMovies = (movieElement)=>{
     });
   };
 
-/* async getTemples Function using fetch()*/
-const getMovies= async () => {
-  const url = 'https://imdb188.p.rapidapi.com/api/v1/getWeekTop10';
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ade2e40a01msha511179100b6d86p1011efjsn4a13c36581c1',
-		'X-RapidAPI-Host': 'imdb188.p.rapidapi.com'
-	}
-};
-  const response = await fetch(url, options);
-  movieList = await response.json();
-  console.log(movieList);
-  displayMovies(movieList.data);
-  
-};
-
+/* async getMovies Function using fetch()*/
+async function printJSON() {
+  const response = await fetch("C:\Users\eliez\Desktop\cse121b\project\Film.JSON");
+  const json = await response.json();
+  console.log(json);
+}
 
 /* reset Function */
 const reset = () => {
