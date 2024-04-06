@@ -16,14 +16,17 @@ const displayMovies = (movieElement)=>{
       movieName.textContent = movie.titleText.text;
       let moviePlot = document.createElement("h4");
       moviePlot.textContent = movie.plot.plotText.plainText;
+      // TODO add year and rating
+  
   
       let img = document.createElement("img");
       img.setAttribute("src", movie.primaryImage.imageUrl);
       img.setAttribute("alt", movie.titleText.text);
 
       cardLeftSide.appendChild(movieName);
+      // TODO append to cardLeftSide the date and the rating
       cardLeftSide.appendChild(moviePlot);
-  
+      
       article.appendChild(cardLeftSide);
       article.appendChild(img);
   
