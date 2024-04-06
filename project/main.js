@@ -3,24 +3,24 @@ const moviesElement = document.querySelector("div#movies");
 let movieList = [];
 
 /* display Function */
-const displayMovies = (movieElement)=>{
-  movieElement.forEach((movie) => {
+const displayMovies = (moviesElement)=>{
+  moviesElement.forEach((movie) => {
 
       let article = document.createElement("div");
       let cardLeftSide = document.createElement('span');
       cardLeftSide.setAttribute("id", "left-side");
   
       let movieName = document.createElement("h5");
-      movieName.textContent = movie.titleText.text;
+      movieName.textContent = movie.Title;
       let moviePlot = document.createElement("h4");
-      moviePlot.textContent = movie.plot.plotText.plainText;
+      moviePlot.textContent = movie.Plot;
       // TODO add year and rating
       //let rating = document.createElement("h5");
       //rating.textContent = movie.ratingSummary.aggregateRating.plainText;
   
       let img = document.createElement("img");
-      img.setAttribute("src", movie.primaryImage.imageUrl);
-      img.setAttribute("alt", movie.titleText.text);
+      img.setAttribute("src", movie.Poster);
+      img.setAttribute("alt", movie.Title);
 
       cardLeftSide.appendChild(movieName);
      // cardLeftSide.appendChild(rating);
@@ -35,20 +35,11 @@ const displayMovies = (movieElement)=>{
   };
 
 /* async getMovies Function using fetch()*/
-const getMovies= async () => {
-  const url = 'https://imdb188.p.rapidapi.com/api/v1/getWeekTop10';
-  const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ade2e40a01msha511179100b6d86p1011efjsn4a13c36581c1',
-		'X-RapidAPI-Host': 'imdb188.p.rapidapi.com'
-	}
-};
-  const response = await fetch(url, options);
+const getMovies = async () => {
+  const response = await fetch("https://eliezargongora.github.io/cse121b//project/Film.JSON");
   movieList = await response.json();
+  displayMovies(movieList);
   console.log(movieList);
-  displayMovies(movieList.data);
-  
 };
 
 
@@ -66,15 +57,15 @@ function sortMovies(movies) {
   let sortedMovies;
   switch (sort) {
     case "release":
-      sortedMovies = movies.sort((a, b) => new Date(a.releaseDate.year, a.releaseDate.month, a.releaseDate.day) - new Date(b.releaseDate.year, b.releaseDate.month, b.releaseDate.day));
+      sortedMovies = movies.sort((a, b) => new Date(a.Released.year, a.Released.month, a.Released.day) - new Date(b.Released.year, b.Released.month, b.Released.day));
     break;
     case "rating":
-      sortedMovies = movies.sort((a, b) => a.ratingsSummary.aggregateRating - b.ratingsSummary.aggregateRating);
+      sortedMovies = movies.sort((a, b) => a.imdbRating.aggregateRating - b.imdbRating.aggregateRating);
     break;
     case "alphabetical":
       sortedMovies = movies.sort((a, b) => {
-        const nameA = a.titleText.text.toUpperCase(); // ignore upper and lowercase
-        const nameB = b.titleText.text.toUpperCase(); // ignore upper and lowercase
+        const nameA = a.Title.text.toUpperCase(); // ignore upper and lowercase
+        const nameB = b.Title.text.toUpperCase(); // ignore upper and lowercase
         if (nameA < nameB) {
           return -1;
         }
