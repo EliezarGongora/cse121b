@@ -16,13 +16,13 @@ const displayMovies = (moviesElement)=>{
       moviePlot.textContent = movie.Plot;
       
       let rating = document.createElement("h5");
-      rating.textContent = movie.imdbRating;
+      rating.textContent = `Rating: ${movie.imdbRating}`;
 
       let releasedate = document.createElement("h5");
       releasedate.textContent = movie.Released;
   
       let img = document.createElement("img");
-      img.setAttribute("src", movie.Images);
+      img.setAttribute("src", movie.Images[1]);
       img.setAttribute("alt", movie.Title);
 
       cardLeftSide.appendChild(movieName);
@@ -60,10 +60,10 @@ function sortMovies(movies) {
   let sortedMovies;
   switch (sort) {
     case "release":
-      sortedMovies = movies.sort((a,b ) => new Date(b.Released.month, b.Released.day, b.Released.year) - new Date(a.Released.month, a.Released.day, a.Released.year))
+      sortedMovies = movies.sort((a, b) => new Date(b.Released) - new Date(a.Released))
     break;
     case "rating":
-      sortedMovies = movies.sort((a, b) => a.imdbRating - b.imdbRating);
+      sortedMovies = movies.sort((a, b) => b.imdbRating - a.imdbRating);
     break;
     case "alphabetical":
       sortedMovies = movies.sort((a, b) => {
@@ -97,4 +97,4 @@ getMovies();
 
 /* Event Listener */
 
-document.querySelector("#sorted").addEventListener("change", () => sortMovies(movieList.data));
+document.querySelector("#sorted").addEventListener("change", () => sortMovies(movieList));
